@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mory-black: #000000;
+  --color-mory-graphite: #0F1115;
+  --color-mory-navy: #060B19;
+  --color-mory-blue: #00F0FF;
+  --color-mory-cyan: #00FFFF;
+  --color-mory-purple: #8A2BE2;
+  --color-mory-teal: #00FFCC;
+
+  --animate-scanline: scanline 8s linear infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+body {
+  background-color: var(--color-mory-black);
+  background-image: radial-gradient(circle at center, var(--color-mory-navy) 0%, var(--color-mory-black) 100%);
+  color: var(--foreground);
+  font-family: var(--font-orbitron), var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+.glass-panel {
+  background: rgba(15, 17, 21, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.05);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+}
+
+.border-glow {
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+}
