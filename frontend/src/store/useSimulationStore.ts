@@ -131,8 +131,10 @@ export interface SimulationState {
     strategic_recommendations: StrategicRecommendation[];
     metrics: Metrics;
     isConnected: boolean;
+    connectionStatus: 'connecting' | 'live' | 'mock' | 'error' | 'offline';
     presentationMode: boolean;
     setConnected: (status: boolean) => void;
+    setConnectionStatus: (status: 'connecting' | 'live' | 'mock' | 'error' | 'offline') => void;
     togglePresentationMode: () => void;
     updateState: (newState: Partial<SimulationState>) => void;
 }
@@ -166,8 +168,10 @@ export const useSimulationStore = create<SimulationState>((set) => ({
         civilization_cycle: "UNKNOWN"
     },
     isConnected: false,
+    connectionStatus: 'offline',
     presentationMode: false,
     setConnected: (status) => set({ isConnected: status }),
+    setConnectionStatus: (status) => set({ connectionStatus: status }),
     togglePresentationMode: () => set((state) => ({ presentationMode: !state.presentationMode })),
     updateState: (newState) => set((state) => ({ ...state, ...newState }))
 }));

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { cn } from "../../lib/utils";
 
 interface AnimatedPulseProps {
-  color?: "cyan" | "blue" | "purple" | "teal" | "red" | "green";
+  color?: "cyan" | "blue" | "purple" | "teal" | "red" | "green" | "yellow";
   size?: "sm" | "md" | "lg";
   className?: string;
 }
@@ -17,6 +17,7 @@ export function AnimatedPulse({ color = "cyan", size = "md", className }: Animat
     teal: "bg-teal-400",
     red: "bg-red-500",
     green: "bg-green-500",
+    yellow: "bg-yellow-500",
   };
 
   const sizeMap = {

@@ -14,7 +14,7 @@ export function DigitalTwinMap() {
   const sectors = useSimulationStore((state) => state.sectors);
   const projections = useSimulationStore((state) => state.projections);
   const metrics = useSimulationStore((state) => state.metrics);
-  const isConnected = useSimulationStore((state) => state.isConnected);
+  const connectionStatus = useSimulationStore((state) => state.connectionStatus);
 
   useEffect(() => {
     setTimeout(() => setMounted(true), 0);
@@ -42,9 +42,9 @@ export function DigitalTwinMap() {
           <MapPin className="h-4 w-4 text-cyan-400" />
           <span className="font-mono text-xs text-white uppercase tracking-wider">NAVIS PRIME GRID</span>
           <div className="h-3 w-[1px] bg-cyan-500/30 mx-2" />
-          <AnimatedPulse color={isConnected ? "cyan" : "red"} size="sm" />
-          <span className={`font-mono text-[10px] uppercase tracking-widest ${isConnected ? "text-cyan-400" : "text-red-400"}`}>
-            {isConnected ? "Live Sync" : "Offline"}
+          <AnimatedPulse color={connectionStatus === 'live' ? "cyan" : connectionStatus === 'mock' ? "yellow" : connectionStatus === 'connecting' ? "blue" : "red"} size="sm" />
+          <span className={`font-mono text-[10px] uppercase tracking-widest ${connectionStatus === 'live' ? "text-cyan-400" : connectionStatus === 'mock' ? "text-yellow-400" : connectionStatus === 'connecting' ? "text-blue-400" : "text-red-400"}`}>
+            {connectionStatus === 'live' ? "Live Sync" : connectionStatus === 'mock' ? "Mock Engine" : connectionStatus === 'connecting' ? "Connecting..." : "Offline"}
           </span>
         </div>
 

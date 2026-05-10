@@ -5,6 +5,7 @@ import { Activity, ShieldAlert, BrainCircuit, Rocket, Map, Target, Server, Datab
 import { cn } from "../../lib/utils";
 import { AnimatedPulse } from "../ui/AnimatedPulse";
 import { useState } from "react";
+import { useSimulationStore } from "../../store/useSimulationStore";
 
 interface ShellProps {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ interface ShellProps {
 
 export function Shell({ children }: ShellProps) {
   const [activeTab, setActiveTab] = useState("Command");
+  const connectionStatus = useSimulationStore((state) => state.connectionStatus);
 
   const navItems = [
     { name: "Command", icon: Target, id: "command" },
@@ -37,7 +39,7 @@ export function Shell({ children }: ShellProps) {
             <div className="relative flex h-8 w-8 items-center justify-center rounded-full border border-cyan-400 bg-cyan-950/50 shadow-[0_0_15px_rgba(0,240,255,0.3)]">
               <Database className="h-4 w-4 text-cyan-400" />
             </div>
-            <AnimatedPulse color="cyan" size="sm" />
+            <AnimatedPulse color={connectionStatus === 'live' ? "cyan" : connectionStatus === 'mock' ? "yellow" : connectionStatus === 'connecting' ? "blue" : "red"} size="sm" />
           </div>
 
           <div className="h-[1px] w-6 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
