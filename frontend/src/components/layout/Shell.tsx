@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Activity, ShieldAlert, BrainCircuit, Rocket, Map, Target, Server, Database } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import { AnimatedPulse } from "../ui/AnimatedPulse";
 import { useState } from "react";
 

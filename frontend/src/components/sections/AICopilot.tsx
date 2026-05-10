@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HoloCard } from "../ui/HoloCard";
 import { Brain, Terminal, Send, Cpu, Zap } from "lucide-react";
-import { useSimulationStore } from "@/store/useSimulationStore";
+import { useSimulationStore } from "../../store/useSimulationStore";
 
 export function AICopilot() {
   const [input, setInput] = useState("");
@@ -30,12 +30,14 @@ export function AICopilot() {
     if (proactiveRecs.length > 0) {
       const latest = proactiveRecs[proactiveRecs.length - 1];
       if (latest.id !== lastProactiveId) {
-        setLastProactiveId(latest.id);
-        setMessages(prev => [...prev, { 
-          role: "ai", 
-          content: `AUTONOMOUS INTERVENTION EXECUTED: ${latest.title}. Confidence: ${latest.confidence}%`, 
-          type: "success" 
-        }]);
+        setTimeout(() => {
+          setLastProactiveId(latest.id);
+          setMessages(prev => [...prev, { 
+            role: "ai", 
+            content: `AUTONOMOUS INTERVENTION EXECUTED: ${latest.title}. Confidence: ${latest.confidence}%`, 
+            type: "success" 
+          }]);
+        }, 0);
       }
     }
   }, [recommendations, lastProactiveId]);
@@ -138,11 +140,11 @@ export function AICopilot() {
         
         {/* Executive Scenarios */}
         <div className="px-4 pt-3 flex flex-wrap gap-2">
-           <button onClick={() => { setInput("Execute Master Demo Sequence"); setTimeout(() => handleSend({ preventDefault: () => {} } as any), 50); }} className="px-2 py-1 bg-white/10 border border-white/30 text-white font-mono text-[9px] uppercase tracking-widest rounded hover:bg-white/20 transition-colors shadow-[0_0_10px_rgba(255,255,255,0.2)]">Execute Master Demo Sequence</button>
-           <button onClick={() => { setInput("Run Civilization Collapse Scenario"); setTimeout(() => handleSend({ preventDefault: () => {} } as any), 50); }} className="px-2 py-1 bg-red-950/40 border border-red-500/30 text-red-300 font-mono text-[9px] uppercase tracking-widest rounded hover:bg-red-900/60 transition-colors">Collapse Scenario</button>
-           <button onClick={() => { setInput("Initiate Autonomous Recovery Protocol"); setTimeout(() => handleSend({ preventDefault: () => {} } as any), 50); }} className="px-2 py-1 bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 font-mono text-[9px] uppercase tracking-widest rounded hover:bg-emerald-900/60 transition-colors">Recovery Protocol</button>
-           <button onClick={() => { setInput("Simulate Severe Climate Cascade"); setTimeout(() => handleSend({ preventDefault: () => {} } as any), 50); }} className="px-2 py-1 bg-orange-950/40 border border-orange-500/30 text-orange-300 font-mono text-[9px] uppercase tracking-widest rounded hover:bg-orange-900/60 transition-colors">Climate Cascade</button>
-           <button onClick={() => { setInput("Activate Governance Override"); setTimeout(() => handleSend({ preventDefault: () => {} } as any), 50); }} className="px-2 py-1 bg-purple-950/40 border border-purple-500/30 text-purple-300 font-mono text-[9px] uppercase tracking-widest rounded hover:bg-purple-900/60 transition-colors">Governance Override</button>
+           <button onClick={() => { setInput("Execute Master Demo Sequence"); setTimeout(() => handleSend(), 50); }} className="px-2 py-1 bg-white/10 border border-white/30 text-white font-mono text-[9px] uppercase tracking-widest rounded hover:bg-white/20 transition-colors shadow-[0_0_10px_rgba(255,255,255,0.2)]">Execute Master Demo Sequence</button>
+           <button onClick={() => { setInput("Run Civilization Collapse Scenario"); setTimeout(() => handleSend(), 50); }} className="px-2 py-1 bg-red-950/40 border border-red-500/30 text-red-300 font-mono text-[9px] uppercase tracking-widest rounded hover:bg-red-900/60 transition-colors">Collapse Scenario</button>
+           <button onClick={() => { setInput("Initiate Autonomous Recovery Protocol"); setTimeout(() => handleSend(), 50); }} className="px-2 py-1 bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 font-mono text-[9px] uppercase tracking-widest rounded hover:bg-emerald-900/60 transition-colors">Recovery Protocol</button>
+           <button onClick={() => { setInput("Simulate Severe Climate Cascade"); setTimeout(() => handleSend(), 50); }} className="px-2 py-1 bg-orange-950/40 border border-orange-500/30 text-orange-300 font-mono text-[9px] uppercase tracking-widest rounded hover:bg-orange-900/60 transition-colors">Climate Cascade</button>
+           <button onClick={() => { setInput("Activate Governance Override"); setTimeout(() => handleSend(), 50); }} className="px-2 py-1 bg-purple-950/40 border border-purple-500/30 text-purple-300 font-mono text-[9px] uppercase tracking-widest rounded hover:bg-purple-900/60 transition-colors">Governance Override</button>
         </div>
 
         <form onSubmit={handleSend} className="relative flex items-center p-4">

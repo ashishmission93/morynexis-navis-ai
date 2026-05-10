@@ -6,7 +6,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { HoloCard } from "../ui/HoloCard";
 import { AnimatedPulse } from "../ui/AnimatedPulse";
 import { MapPin, Navigation } from "lucide-react";
-import { useSimulationStore } from "@/store/useSimulationStore";
+import { useSimulationStore } from "../../store/useSimulationStore";
 
 export function DigitalTwinMap() {
   const [mounted, setMounted] = useState(false);
@@ -17,7 +17,7 @@ export function DigitalTwinMap() {
   const isConnected = useSimulationStore((state) => state.isConnected);
 
   useEffect(() => {
-    setMounted(true);
+    setTimeout(() => setMounted(true), 0);
   }, []);
 
   if (!mounted) return <div className="h-full w-full bg-[#0F1115] rounded-xl animate-pulse" />;

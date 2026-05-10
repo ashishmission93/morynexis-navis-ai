@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Orbitron, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { WebSocketProvider } from "@/components/providers/WebSocketProvider";
+import { WebSocketProvider } from "../components/providers/WebSocketProvider";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",

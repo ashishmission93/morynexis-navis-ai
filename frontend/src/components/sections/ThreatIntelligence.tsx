@@ -3,13 +3,13 @@
 import { motion } from "framer-motion";
 import { HoloCard } from "../ui/HoloCard";
 import { Radar, Clock, TrendingUp, TrendingDown, Activity, AlertTriangle } from "lucide-react";
-import { useSimulationStore } from "@/store/useSimulationStore";
+import { useSimulationStore } from "../../store/useSimulationStore";
 
 export function ThreatIntelligence() {
   const forecasts = useSimulationStore((state) => state.forecasts);
   const metrics = useSimulationStore((state) => state.metrics);
 
-  const renderForecastSection = (title: string, data: any[]) => (
+  const renderForecastSection = (title: string, data: Array<{ metric: string; value: number; trend: string }>) => (
     <div className="mb-4">
       <div className="flex items-center gap-2 mb-2 border-b border-white/10 pb-1">
         <Clock className="h-3 w-3 text-cyan-500/50" />

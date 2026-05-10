@@ -1,6 +1,6 @@
 "use client";
 
-import { useSimulationStore } from "@/store/useSimulationStore";
+import { useSimulationStore } from "../../store/useSimulationStore";
 import { HoloCard } from "../ui/HoloCard";
 import { Database, Clock, BrainCircuit, Target, ShieldAlert, Activity } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";

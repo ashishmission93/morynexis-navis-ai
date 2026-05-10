@@ -1,15 +1,15 @@
 "use client";
 
-import { Shell } from "@/components/layout/Shell";
-import { StrategicCommandCenter } from "@/components/sections/StrategicCommandCenter";
-import { MissionControl } from "@/components/sections/MissionControl";
-import { AICopilot } from "@/components/sections/AICopilot";
-import { DigitalTwinMap } from "@/components/sections/DigitalTwinMap";
-import { LiveReasoningStream } from "@/components/sections/LiveReasoningStream";
-import { OperationalMemory } from "@/components/sections/OperationalMemory";
-import { ThreatIntelligence } from "@/components/sections/ThreatIntelligence";
-import { MultiAgentNetwork } from "@/components/sections/MultiAgentNetwork";
-import { useSimulationStore } from "@/store/useSimulationStore";
+import { Shell } from "../components/layout/Shell";
+import { StrategicCommandCenter } from "../components/sections/StrategicCommandCenter";
+import { MissionControl } from "../components/sections/MissionControl";
+import { AICopilot } from "../components/sections/AICopilot";
+import { DigitalTwinMap } from "../components/sections/DigitalTwinMap";
+import { LiveReasoningStream } from "../components/sections/LiveReasoningStream";
+import { OperationalMemory } from "../components/sections/OperationalMemory";
+import { ThreatIntelligence } from "../components/sections/ThreatIntelligence";
+import { MultiAgentNetwork } from "../components/sections/MultiAgentNetwork";
+import { useSimulationStore } from "../store/useSimulationStore";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {

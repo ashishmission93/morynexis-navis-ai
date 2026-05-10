@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useSimulationStore } from "@/store/useSimulationStore";
+import { useSimulationStore } from "../../store/useSimulationStore";
 
 export function WebSocketProvider({ children }: { children: React.ReactNode }) {
   const { setConnected, updateState } = useSimulationStore();

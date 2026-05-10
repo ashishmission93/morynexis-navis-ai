@@ -4,7 +4,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { HoloCard } from "../ui/HoloCard";
 import { Brain, Network, Zap, Shield, Navigation, CloudLightning, CarFront } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useSimulationStore } from "@/store/useSimulationStore";
+import { useSimulationStore } from "../../store/useSimulationStore";
+
+const agentMap: Record<string, number> = {
+  "Optimization": 0,
+  "Navigation": 1,
+  "Risk": 2,
+  "Traffic": 3,
+  "Weather": 4,
+  "Defense": 2,
+  "Core": 5
+};
 
 export function MultiAgentNetwork() {
   const [activeEdge, setActiveEdge] = useState<number>(0);
@@ -17,19 +27,9 @@ export function MultiAgentNetwork() {
   // Active negotiation
   const activeNegotiation = negotiations.length > 0 ? negotiations[negotiations.length - 1] : null;
 
-  const agentMap: Record<string, number> = {
-    "Optimization": 0,
-    "Navigation": 1,
-    "Risk": 2,
-    "Traffic": 3,
-    "Weather": 4,
-    "Defense": 2,
-    "Core": 5
-  };
-
   useEffect(() => {
     if (!activeNegotiation && latestLog) {
-      setActiveEdge(agentMap[latestLog.agent] ?? Math.floor(Math.random() * 5));
+      setTimeout(() => setActiveEdge(agentMap[latestLog.agent] ?? Math.floor(Math.random() * 5)), 0);
     }
   }, [latestLog, activeNegotiation]);
 
@@ -179,6 +179,7 @@ export function MultiAgentNetwork() {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function AgentNode({ agent, style }: { agent: any, style: any }) {
   return (
     <motion.div 
